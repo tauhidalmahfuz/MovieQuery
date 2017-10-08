@@ -23,13 +23,27 @@ var newMovie = {title: "new movie", year: "2000", length: 165, rating: "7.1", ge
 console.log(addMovie(newMovie));
 
 function movieByRating(){
-  return movieList.sort("rating");
+  return movieList.sort(function(a, b) {
+    if (a.rating > b.rating) {
+        return -1;
+      }
+    if (a.rating < b.rating) {
+        return 1;
+      }
+    return 0;
+  });
+
 }
 
 console.log(movieByRating());
 
 function findByTitle( title ){
-  //add code
+  var len= movieList.length;
+    for (var i=0; i<len; i++) {
+        if (movieList[i].title == title) {
+          return console.log(movieList[i]);
+        }
+    }
 }
 
-console.log(findByTitle("matrix"));
+findByTitle("Star Wars: Return of the Jedi");
